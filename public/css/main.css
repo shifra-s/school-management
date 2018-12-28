@@ -1,0 +1,22 @@
+/*
+body{
+    background-image: url('/imgs/coding_bg.jpeg');
+    font-family: 'Dosis', sans-serif;
+    margin: auto 0;
+    background-size: 100%;
+}
+*/
+
+#student-error-name, #student-error-email, #student-error-number, #student-error-image, #course-error-name, #course-error-description{
+    color:red;
+    font-size:1em;
+    font-weight:700;
+    font-style: italic;
+    text-transform: capitalize;
+    padding-top: 14px;
+
+}
+
+nav, .student , .admin , .course {
+    text-transform: capitalize;
+}
