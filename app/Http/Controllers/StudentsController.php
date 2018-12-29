@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use \App\Models\Student;
 use \App\Models\Course;
+use \App\Models\CourseStudent;
 
 use App\Http\Requests\StudentSaveRequest;
 
@@ -33,26 +34,48 @@ class StudentsController extends Controller
                 //if every thing goes fine move the file
                 $request->file('image')->move($destinationPath, $filename . '.' . $extension);
             }
-
         }
 
         $student = new Student;
-        $student->fill(array_except($request->all(), ['_token', 'image']));
+        $student->fill(array_except($request->all(), ['_token', 'image', 'courses']));
         if (isset($filename)) {
             $student->image = $filename . '.' . $extension;
         }
+
+
         $student->save();
+
+        $this->saveCourseRegistration($request->courses, $student->id);
 
         return redirect()->back();
 
+    }
+    // PSR2
+    private function saveCourseRegistration($courses, $studentId)
+    {
+        foreach ($courses as $course) {
+            CourseStudent::create([
+                "student_id" => $studentId,
+                "course_id" => $course,
+            ]);
+        }
     }
 
     //show info of any selected student
     public function show($id)
     {
         //$student = Student::where('id', $id)->first();
-        $student = Student::with('courses.course')->find($id);
+        $student = Student::find($id)->with('courses.course')->get();
         $courses = Course::get();
+
+        //foreach ($student as $studentRelation) {
+            //dd($studentRelation);
+            //foreach ($studentRelation->courses as $courses) {
+               // dd($courses->course);
+            //}
+
+       //}
+
 
         return view('schools.student-details', compact('student', 'courses'));
     }
@@ -81,11 +104,16 @@ class StudentsController extends Controller
         }
 
         $currentStudent = Student::find($request->student_id); //find current student
-        $currentStudent->fill(array_except($request->all(), ['_token', 'image', 'student_id'])); //not saving these two fields in the array (implicitly)
+        $currentStudent->fill(array_except($request->all(), ['_token', 'image', 'student_id', 'courses'])); //not saving these two fields in the array (implicitly)
         if (isset($filename)) {
             $currentStudent->image = $filename . '.' . $extension;
         }
+        //dd($request->all());
         $currentStudent->save();
+
+
+
+        $this->saveCourseRegistration($request->courses, $currentStudent->id);
 
         return redirect()->back();
     }
@@ -95,9 +123,11 @@ class StudentsController extends Controller
     {
         try {
             $student = Student::find($id);
+            $studentRelation = CourseStudent::where('student_id',$id)->get();
 
             if ($student) {
                 $student->delete();
+                $studentRelation->delete();
             }
             $count = Student::count();
             //return json encoded array
@@ -110,8 +140,13 @@ class StudentsController extends Controller
 
     public function showEdit($id)
     {
+        $courses = Course::get();
         $student = Student::find($id);
-        return view('schools.edit-student', compact('student'));
+        $courseStudents = CourseStudent::where('student_id', $id)->get();
+        //dd($courseStudents->count());
+
+
+        return view('schools.edit-student', compact('student','courses', 'courseStudents' ));
     }
 }
 

@@ -65,6 +65,7 @@ class AdministratorsController extends Controller
         if (isset($filename)) {
             $admin->image = $filename . '.' . $extension;
         }
+        dd('saving admin');
         $admin->save();
 
         return redirect()->back();
@@ -85,7 +86,7 @@ class AdministratorsController extends Controller
     public function showEdit($id)
     {
         $admin = User::with('roles')->find($id);
-        //$roles = Role::get();
+        $roles = Role::get();
 
         return view('administrators.edit-admin', compact('admin', 'roles'));
     }

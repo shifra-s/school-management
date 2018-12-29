@@ -20,7 +20,7 @@ class SchoolController extends Controller
 
         $countStudents = Student::count();
 
-        return view('schools.index', compact('courses', 'students', 'countCourses', 'countStudents'));
+        return view('schools.index', compact('courses','students', 'countCourses', 'countStudents'));
     }
 
 }

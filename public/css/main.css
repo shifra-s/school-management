@@ -20,3 +20,8 @@ body{
 nav, .student , .admin , .course {
     text-transform: capitalize;
 }
+
+.registered-course-img{
+    height:50px;
+    width:50px;
+}
