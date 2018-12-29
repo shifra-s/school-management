@@ -2,7 +2,7 @@
         <div class="panel-heading">
             <h4>Edit Student </h4>
         </div>
-        <div class="panel-body">    
+        <div class="panel-body">
             <form action="/save-edited-student" method="POST" enctype="multipart/form-data">
                 {!! csrf_field() !!}
                 <div class="form-group">
@@ -21,28 +21,18 @@
                 <div class="form-group">
                         <label for="student-img">Photo</label>
                         <input type="file" id="edit-student-img" name="image">
-                    </div>
-                <div>
+                </div>
                 <div class="form-group col-md-12">
-                    @foreach ($courses as $course)
-                        <div class="col-md-4">
+                    @foreach($courses as $course)
+                        @if($course->students->count() == 0)
                             <label for="courses"> <img class="img-thumbnail registered-course-img" src="uploads/{{$course->image}}"> {{$course->name}}</label>
-                            @if($courseStudents->count() > 0)
-                                @foreach($courseStudents as $courseStudent)
-
-                                    @if($course->id == $courseStudent->course_id)
-                                        <input type="checkbox" id="course-{{$course->id}}" name="courses[]" value="{{ $course->id }}" checked>
-                                    @else
-                                        <input type="checkbox" id="course-{{$course->id}}" name="courses[]" value="{{ $course->id }}">
-                                    @endif
-                                @endforeach
-                            @else
-                                <input type="checkbox" id="course-{{$course->id}}" name="courses[]" value="{{ $course->id }}">
-                            @endif
-                        </div>
-                        <div class="col-md-1">
-                        </div>
+                            <input type="checkbox" id="course-{{$course->id}}" name="courses[]" value="{{ $course->id }}" >
+                        @else
+                            <label for="courses"> <img class="img-thumbnail registered-course-img" src="uploads/{{$course->image}}"> {{$course->name}}</label>
+                            <input type="checkbox" id="course-{{$course->id}}" name="courses[]" value="{{ $course->id }}" checked>
+                        @endif
                     @endforeach
+
                 </div>
                 <div>
                     <input type="submit" class="btn btn-success" id="update-student-btn" value="Update">
