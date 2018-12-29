@@ -24,4 +24,14 @@ nav, .student , .admin , .course {
 .registered-course-img{
     height:50px;
     width:50px;
+    margin-bottom:10px;
+}
+
+.student-image{
+    margin-bottom:15px;
+}
+
+.student-name{
+    font-size:1.5em;
+    text-transform:capitalize;
 }
