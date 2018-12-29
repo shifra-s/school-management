@@ -31,7 +31,7 @@ nav, .student , .admin , .course {
     margin-bottom:15px;
 }
 
-.student-name{
+.student-name, .course-name{
     font-size:1.5em;
     text-transform:capitalize;
 }

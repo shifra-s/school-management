@@ -17,7 +17,7 @@
                 <img class="img-thumbnail course-image" src="/uploads/{{$course->image}}">
             </div>
             <div class="col-md-9">
-                <h3 class="course-name">{{$course->name}}</h3>
+                <span class="course-name">{{$course->name}}</span>
             </div>
             <div class="col-md-9">
                 <span class="course-number">{{$course->description}}</span>
