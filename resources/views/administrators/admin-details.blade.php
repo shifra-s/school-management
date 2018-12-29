@@ -15,7 +15,7 @@
                 <img class="img-thumbnail admin-image" src="/uploads/{{$admin->image}}">
             </div>
             <div class="col-md-9">
-                <h3 class="admin-name">{{$admin->name}}</h3>
+                <span class="admin-name">{{$admin->name}}</span>
             </div>
             <div class="col-md-9">
                 <span class="admin-email">{{$admin->email}}</span>
