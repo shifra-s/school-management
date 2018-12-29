@@ -25,12 +25,19 @@
                 <div class="form-group col-md-12">
                     @foreach($courses as $course)
                         @if($course->students->count() == 0)
+
                             <label for="courses"> <img class="img-thumbnail registered-course-img" src="uploads/{{$course->image}}"> {{$course->name}}</label>
                             <input type="checkbox" id="course-{{$course->id}}" name="courses[]" value="{{ $course->id }}" >
                         @else
-                            <label for="courses"> <img class="img-thumbnail registered-course-img" src="uploads/{{$course->image}}"> {{$course->name}}</label>
-                            <input type="checkbox" id="course-{{$course->id}}" name="courses[]" value="{{ $course->id }}" checked>
+                            @foreach($course->students as $courseStudent)
+
+                                @if($courseStudent->student_id == $student->id)
+                                    <label for="courses"> <img class="img-thumbnail registered-course-img" src="uploads/{{$course->image}}"> {{$course->name}}</label>
+                                    <input type="checkbox" id="course-{{$course->id}}" name="courses[]" value="{{ $course->id }}" checked>
+                            @endforeach
+
                         @endif
+
                     @endforeach
 
                 </div>

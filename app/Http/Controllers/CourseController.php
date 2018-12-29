@@ -96,24 +96,15 @@ class CourseController extends Controller
         return redirect()->back();
     }
 
-    /*
-        public function delete($id) {
-            $course = Course::find($id);
-
-            if (!is_null($course)) {
-                $course->delete();
-            }
-
-            return redirect()->back();
-        }
-
-        */
-
 
     public function showEdit($id)
     {
         $course = Course::find($id);
-        return view('courses.edit-course', compact('course'));
+
+        $studentsRegistered = Course::where('id',$id)->with('students')->first();
+        $numberStudentsRegistered = $studentsRegistered->students->count();
+
+        return view('courses.edit-course', compact('course', 'numberStudentsRegistered'));
     }
 
     public function delete($id) {

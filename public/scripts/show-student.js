@@ -1,6 +1,6 @@
 $('.student').click(function () { //api with jquery
     var studentId = $(this).data('id');
-
+    console.log(studentId);
     $.get('/student/' + studentId, function (data) {
 
         if (data) {
