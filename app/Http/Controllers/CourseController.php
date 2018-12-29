@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 
 use \App\Models\Course;
+use \App\Models\CourseStudent;
+
 
 use App\Http\Requests;
 use App\Http\Requests\CourseSaveRequest;
@@ -117,9 +119,12 @@ class CourseController extends Controller
     public function delete($id) {
         try {
             $course = Course::find($id);
+            $courseRelation = CourseStudent::where('course_id', $id)->get();
+           //find($$idid); id, student_id, course_id
 
             if ($course) {
                 $course->delete();
+                $courseRelation->delete();
             }
             $count = Course::count();
             //return json encoded array
