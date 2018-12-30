@@ -20,7 +20,7 @@
                 <span class="course-name">{{$course->name}}</span>
             </div>
             <div class="col-md-9">
-                <span class="course-number">{{$course->description}}</span>
+                <span class="course-description">{{$course->description}}</span>
             </div>
             <div class="col-md-12 col-xs-9">
                 @if($course->students)
