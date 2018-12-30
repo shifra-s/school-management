@@ -30,16 +30,13 @@
                 @if($student->courses)
                     @foreach($student->courses as $courses)
                         <div class="row" id="courses">
-
                         @if(isset($courses->course) && !is_null($courses->course)) <!--check to make sure the course list isn't empty-->
                             <div class="col-md-6 col-xs-9">
-
                                 <img class="img-thumbnail registered-course-img" src="uploads/{{$courses->course->image}}">
                                 <span>{{$courses->course->name}}</span>
                             </div>
                             @endif
                         </div>
-
                     @endforeach
                 @endif
 
