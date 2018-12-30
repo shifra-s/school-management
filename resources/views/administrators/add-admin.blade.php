@@ -23,7 +23,7 @@
             </div>
             <div class="form-group">
                 <label for="admin-pwd">Password</label>
-                <input type="text" class="form-control" id="admin-pwd" name="password" placeholder="Enter Password">
+                <input type="password" class="form-control" id="admin-pwd" name="password" placeholder="Enter Password">
             </div>
             <div class="form-group">
                 <label for="admin-img">Photo</label>

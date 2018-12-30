@@ -39,7 +39,7 @@
             </div>
             <div class="form-group">
                 <label for="admin-password">Password</label>
-                <input class="form-control" id="edit-admin-password" name="password"
+                <input type="password" class="form-control" id="edit-admin-password" name="password"
                        placeholder="Enter a password only if you want to change it">
             </div>
             <div class="form-group">
@@ -57,4 +57,3 @@
         </form>
     </div>
 </div>
-
