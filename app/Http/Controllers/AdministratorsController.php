@@ -9,9 +9,7 @@ use App\User;
 use Illuminate\Http\Request;
 use App\Http\Requests\AdminSaveRequest;
 
-
 use App\Http\Requests;
-
 
 class AdministratorsController extends Controller
 {
@@ -115,14 +113,20 @@ class AdministratorsController extends Controller
         }
 
         $currentAdmin = Administrator::find($request->input('id')); //find current admin
-        $currentAdmin->fill(array_except($request->all(), ['_token', 'image', 'admin_id'])); //not saving these two fields in the array (implicitly)
+        $currentAdmin->fill(array_except($request->all(), ['_token', 'image', 'admin_id','password'])); //not saving these two fields in the array (implicitly)
         if (isset($filename)) {
             $currentAdmin->image = $filename . '.' . $extension;
         }
+        //need to do this check because the pw is the only field not loaded into the edit form-without this, it will be deleted from db if not updated
+        if (!empty($request->password)) {
+            $currentAdmin->password = bcrypt($request->password);
+        }
+
         $currentAdmin->save();
 
         return redirect()->back();
     }
+
 
     public function delete($id)
     {
