@@ -21,13 +21,13 @@ nav, .student , .admin , .course {
     text-transform: capitalize;
 }
 
-.registered-course-img{
+.registered-course-img , .registered-student-img{
     height:50px;
     width:50px;
     margin-bottom:10px;
 }
 
-.student-image{
+.student-image , .course-image{
     margin-bottom:15px;
 }
 
