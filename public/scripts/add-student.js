@@ -1,8 +1,9 @@
 
 $('#add-student').click(function(){
-    // let addCourse = $('#add-course-form');
-    //addCourse.hide();
-    // $('#info-wrapper').remove(addCourse);
+
+    //reset the error messages in case the user didn't try to submit and the messages remain
+    resetStudentFormValidations();
+
     $('#general-info-school').hide();
     $('#add-course-form').hide();
     $('#student-details-section').hide();
