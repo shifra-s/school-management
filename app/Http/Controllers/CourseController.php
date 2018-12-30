@@ -6,6 +6,8 @@ use Illuminate\Http\Request;
 
 use \App\Models\Course;
 use \App\Models\CourseStudent;
+use \App\Models\Student;
+
 
 
 use App\Http\Requests;
@@ -56,9 +58,12 @@ class CourseController extends Controller
     //show info of any selected course
     public function show($id)
     {
-        $course = Course::find($id);
+        //$course = Course::find($id);
 
-        return view('courses.course-details', compact('course'));
+        $course = Course::with('students')->where('id', $id)->first();
+        $students = Student::get();
+
+        return view('courses.course-details', compact('course','students'));
 
     }
 
