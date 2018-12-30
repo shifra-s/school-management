@@ -7,15 +7,18 @@ $('.course').click(function () { //api with jquery
         if (data) {
             console.log(data);
             //when we receive the data, display the data (when a course is clicked)
-            $('#info-wrapper').html(data);
+            $('#student-details-section').html(data);
+            displayDetailsSection();
 
             //this makes the edit button work bc its part of what is coming from the server. ONLY after we show the students can we call the function on the edit button
             $('.course-edit').click(function () {
                 let form = $('#edit-course-form');
                 $.get('/course/edit/' + courseId, function (data) {
-                    $('#info-wrapper').html(data);//replace the main container with the form
+                    $('#student-details-section').html(data);//replace the main container with the form
+                    displayDetailsSection();
                 })
-                $('#info-wrapper').html(form);
+                $('#student-details-section').html(form);
+                displayDetailsSection();
                 //show the form (default is display none)
                 form.show();
 
@@ -26,3 +29,10 @@ $('.course').click(function () { //api with jquery
         }
     });
 });
+
+function displayDetailsSection() {
+    $('#general-info-school').hide();
+    $('#add-student-form').hide();
+    $('#add-course-form').hide();
+    $('#student-details-section').show();
+}

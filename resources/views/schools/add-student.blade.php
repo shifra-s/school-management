@@ -3,7 +3,7 @@
         <h4>Add New Student </h4>
     </div>
     <div class="panel-body">
-        <form action="/add-new-student" method="POST" enctype="multipart/form-data" id="student-validation" onsubmit="studentFormValidation()">
+        <form action="/add-new-student" method="POST" enctype="multipart/form-data" id="student-validation" onsubmit="return studentFormValidation()">
             {!! csrf_field() !!}
             <div class="form-group">
                 <label for="student-name">Name</label>
@@ -25,7 +25,7 @@
             </div>
             <div class="form-group">
                 <label for="student-img">Photo</label>
-                <input type="file" id="student-img" name="image" required>
+                <input type="file" id="student-img" name="image">
                 <div id="student-error-image"></div>
             </div>
 

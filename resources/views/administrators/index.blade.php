@@ -50,6 +50,8 @@
                         @endif
                     </div>
                 </div>
+                @include('administrators.add-admin')
+                <div id="admin-details-section" style="display: none"></div>
             </div>
 
         </div>
@@ -66,5 +68,4 @@
 
     @endpush
 
-    @include('administrators.add-admin')
 

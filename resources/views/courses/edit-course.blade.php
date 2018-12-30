@@ -23,7 +23,9 @@
                 </div>
                 <div>
                     <input type="submit" class="btn btn-success" value="Update">
+                    @if($numberStudentsRegistered == 0)
                     <button type="button" class="btn btn-danger" id="delete-course-btn" data-info="{{ json_encode(['id' => $course->id, 'name' => $course->name]) }}">Delete</button>
+                    @endif
                 </div>
             </form>
         </div>

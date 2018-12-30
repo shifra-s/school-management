@@ -62,7 +62,7 @@
 
             <!-- Show the number of courses and students -->
             <div id="info-wrapper">
-                <div class="panel panel-default">
+                <div class="panel panel-default" id="general-info-school">
                     <div class="panel-heading">
                         <h4>General Info</h4>
                     </div>
@@ -85,6 +85,11 @@
                             Please select a student or course from the list to view/edit the details.
                         </div>
                     </div>
+                </div>
+                @include('schools.add-student')
+                @include('courses.add-course')
+                <div id="student-details-section" style="display: none">
+
                 </div>
             </div>
 
@@ -116,9 +121,6 @@
 
 
 @endpush
-
-@include('schools.add-student')
-@include('courses.add-course')
 
 
 @push('styles')

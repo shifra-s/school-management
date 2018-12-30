@@ -5,7 +5,8 @@ $('.admin').click(function () { //api with jquery
 
         if (data) {
             //when we receive the data, display the data (when an admin is clicked)
-            $('#main-info-wrapper-admins').html(data);
+            $('#admin-details-section').html(data);
+            displayAdminSection();
 
             //this makes the edit button work bc its part of what is coming from the server. ONLY after we show the admins can we call the function on the edit button
             $('.admin-edit').click(function () {
@@ -13,7 +14,8 @@ $('.admin').click(function () { //api with jquery
                 //var form = $('#edit-admin-form');
                 $.get('admin/edit/' + adminId, function (data) {
                     //replace the main container with the form
-                    $('#main-info-wrapper-admins').html(data);
+                    $('#admin-details-section').html(data);
+                    displayAdminSection();
                 });
             });
 
@@ -22,3 +24,9 @@ $('.admin').click(function () { //api with jquery
         }
     });
 });
+
+function displayAdminSection() {
+    $('#admin-count').hide();
+    $('#add-admin-form').hide();
+    $('#admin-details-section').show();
+}

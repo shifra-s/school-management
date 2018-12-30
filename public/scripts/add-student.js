@@ -1,11 +1,14 @@
 
 $('#add-student').click(function(){
-
-    let form = $('#add-student-form');
+    // let addCourse = $('#add-course-form');
+    //addCourse.hide();
+    // $('#info-wrapper').remove(addCourse);
+    $('#general-info-school').hide();
+    $('#add-course-form').hide();
+    $('#student-details-section').hide();
+    $('#add-student-form').show();
     //replace the main container with the form
-    $('#info-wrapper').html(form);
     //show the form (default is display none)
-    form.show();
 
 });
 
