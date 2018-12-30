@@ -20,3 +20,18 @@ body{
 nav, .student , .admin , .course {
     text-transform: capitalize;
 }
+
+.registered-course-img , .registered-student-img{
+    height:50px;
+    width:50px;
+    margin-bottom:10px;
+}
+
+.student-image , .course-image{
+    margin-bottom:15px;
+}
+
+.student-name, .course-name, .admin-name{
+    font-size:1.5em;
+    text-transform:capitalize;
+}

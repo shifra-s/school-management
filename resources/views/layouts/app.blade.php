@@ -46,17 +46,16 @@
 
             <!-- Branding Image -->
             <a class="navbar-brand" href="{{ url('/') }}">
-                <a href="#" class="navbar-left"><img src="/imgs/john_bryce_logo.jpg"
-                                                     style="width:140px; height:100px; padding:5px"></a>
-
-                <!--<img src="/imgs/puppy.jpeg" style="width:90px; height:30px">-->
+                <a href="#" class="navbar-left">
+                    <img src="/imgs/john_bryce_logo.jpg" alt="jb-logo" style="width:140px; height:100px; padding:5px">
+                </a>
             </a>
         </div>
 
         <div class="collapse navbar-collapse" id="app-navbar-collapse">
         @if(\Auth::check())
             <!-- Left Side Of Navbar -->
-                <ul class="nav navbar-nav main-menu navbar-expand-lg navbar-dark fixed-top">
+                <ul class="nav navbar-nav main-menu navbar-expand-lg navbar-dark fixed-top nav-school-admin">
                     <li><a href="{{ url('/home') }}">Home</a></li>
                     <li><a href="{{ url('/schools') }}">School</a></li>
                     @if(in_array(\Auth::user()->role, [1,2]))
@@ -77,7 +76,7 @@
                            aria-expanded="false">
                             <strong>{{ Auth::user()->name}} <span>&nbsp&nbsp</span></strong>{{\Auth::user()->roles->name }} <span class="caret"></span>
 
-                            <img width="100" height="100" class="img-thumbnail" src="uploads/{{Auth::user()->image}}">
+                                <img width="100" height="100" class="img-thumbnail" src="uploads/{{Auth::user()->image}}">
                         </a>
                         <ul class="dropdown-menu" role="menu">
                             <li><a href="{{ url('/logout') }}"><i class="fa fa-btn fa-sign-out"></i>Logout</a></li>

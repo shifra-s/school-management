@@ -39,7 +39,7 @@
             </div>
             <div class="form-group">
                 <label for="admin-password">Password</label>
-                <input class="form-control" id="edit-admin-password" name="password"
+                <input type="password" class="form-control" id="edit-admin-password" name="password"
                        placeholder="Enter a password only if you want to change it">
             </div>
             <div class="form-group">
@@ -48,7 +48,7 @@
             </div>
             <div>
                 <input type="submit" class="btn btn-success" value="Update">
-            @if(\Auth::user()->role == 2 && \Auth::user()->id != $admin->id) <!--manager not editing himself -->
+            @if((\Auth::user()->role == 2 && \Auth::user()->id != $admin->id) || (\Auth::user()->role == 1))<!--manager not editing himself -->
                 <button type="button" class="btn btn-danger" id="delete-admin-btn"
                         data-info="{{ json_encode(['id' => $admin->id, 'name' => $admin->name]) }}">Delete
                 </button>
@@ -57,4 +57,3 @@
         </form>
     </div>
 </div>
-

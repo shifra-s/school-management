@@ -1,13 +1,12 @@
-//$('#delete-student-btn')// this works only on the elements which loaded with the page but not for the elementnts which created dynamically
 
 //on click recognizes all elements-including ones loading dynamically
-$(document).on('click', '#delete-student-btn', function () {
+$(document).on('click', '#delete-admin-btn', function () {
     var info = $(this).data('info');
     var token = $('meta[name="token"]').attr("content");
     console.log(info);
     swal({
         title: "Are you sure?",
-        text: "This will delete student " + info.name,
+        text: "This will delete admin " + info.name,
         icon: "warning",
         buttons: true,
         dangerMode: true,
@@ -15,15 +14,15 @@ $(document).on('click', '#delete-student-btn', function () {
         .then((willDelete) => {
             if (willDelete) {
                 console.log(token);
-                $.post('/student/delete/' + info.id, {'_token': token}, function (data) {
+                $.post('/admin/delete/' + info.id, {'_token': token}, function (data) {
                     //json.parse is an internal js function
                     var parsed = JSON.parse(data);
                     if (parsed.status === 'success') {
-                        $('#student-' + parsed.id).remove(); //deletes the html from the page by identifying the specific student with the student id
-                        if (parsed.remaining == 0) { //seems to be ignoring this line.. deleting the student before even going into this condition
-                            $('#student-table').html("<strong><No Students found</strong>")
+                        $('#admin-' + parsed.id).remove(); //deletes the html from the page by identifying the specific admin with the admin id
+                        if (parsed.remaining == 0) { //seems to be ignoring this line.. deleting the admin before even going into this condition
+                            $('#admin-table').html("<strong><No Admins found</strong>")
                         }
-                        swal('Okay, ' + info.name + ' has been deleted!', {
+                        swal("Okay, the administrator " + info.name + " has been deleted!", {
                             icon: "success",
                         });
                     } else {
@@ -31,7 +30,7 @@ $(document).on('click', '#delete-student-btn', function () {
                     }
                 });
             } else {
-                swal("Student is safe");
+                swal("Admin is safe");
             }
         });
 });

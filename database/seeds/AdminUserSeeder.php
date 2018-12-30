@@ -11,6 +11,6 @@ class AdminUserSeeder extends Seeder
      */
     public function run()
     {
-        \DB::table('administrators')->insert(['name' => 'Admin', 'role' => '1', 'image' => 'uploads/2FiOLuKHQg54.jpeg', 'phone' => '8888888888', 'email' => 'owner@owner.com', 'password' => bcrypt('123456')])
+        \DB::table('administrators')->insert(['name' => 'Shifra', 'role' => '1', 'image' => 'uploads/shifra.jpg', 'phone' => '8888888888', 'email' => 'shifra@jb.com', 'password' => bcrypt('123456')])
 ;    }
 }

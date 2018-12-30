@@ -5,6 +5,10 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 
 use \App\Models\Course;
+use \App\Models\CourseStudent;
+use \App\Models\Student;
+
+
 
 use App\Http\Requests;
 use App\Http\Requests\CourseSaveRequest;
@@ -54,9 +58,12 @@ class CourseController extends Controller
     //show info of any selected course
     public function show($id)
     {
-        $course = Course::find($id);
+        //$course = Course::find($id);
 
-        return view('courses.course-details', compact('course'));
+        $course = Course::with('students')->where('id', $id)->first();
+        $students = Student::get();
+
+        return view('courses.course-details', compact('course','students'));
 
     }
 
@@ -94,32 +101,26 @@ class CourseController extends Controller
         return redirect()->back();
     }
 
-    /*
-        public function delete($id) {
-            $course = Course::find($id);
-
-            if (!is_null($course)) {
-                $course->delete();
-            }
-
-            return redirect()->back();
-        }
-
-        */
-
 
     public function showEdit($id)
     {
         $course = Course::find($id);
-        return view('courses.edit-course', compact('course'));
+
+        $studentsRegistered = Course::where('id',$id)->with('students')->first();
+        $numberStudentsRegistered = $studentsRegistered->students->count();
+
+        return view('courses.edit-course', compact('course', 'numberStudentsRegistered'));
     }
 
     public function delete($id) {
         try {
             $course = Course::find($id);
+            $courseRelation = CourseStudent::where('course_id', $id)->get();
+           //find($$idid); id, student_id, course_id
 
             if ($course) {
                 $course->delete();
+                $courseRelation->delete();
             }
             $count = Course::count();
             //return json encoded array

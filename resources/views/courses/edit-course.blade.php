@@ -17,7 +17,10 @@
                 <div class="form-group">
                         <label for="course-img">Photo</label>
                         <input type="file" id="edit-course-img" name="image">
-                    </div>
+                </div>
+                <div>
+                    There are a total of {{$numberStudentsRegistered}} students registered!
+                </div>
                 <div>
                     <input type="submit" class="btn btn-success" value="Update">
                     <button type="button" class="btn btn-danger" id="delete-course-btn" data-info="{{ json_encode(['id' => $course->id, 'name' => $course->name]) }}">Delete</button>
