@@ -7,7 +7,7 @@ body{
 }
 */
 
-#student-error-name, #student-error-email, #student-error-number, #student-error-image, #course-error-name, #course-error-description{
+#student-error-name, #student-error-email, #student-error-number, #student-error-image, #course-error-name, #course-error-description, #course-error-image{
     color:red;
     font-size:1em;
     font-weight:700;
