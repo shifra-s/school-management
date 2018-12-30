@@ -6,8 +6,22 @@ var studentImageError = $('#student-error-image');
 
 var courseNameError = $('#course-error-name');
 var courseDescriptionError = $('#course-error-description');
-var courseImageError = $('#student-error-image');
+var courseImageError = $('#course-error-image');
 
+//reset student form validation error messages
+function resetStudentFormValidations() {
+    studentNameError.html('');
+    studentPhoneError.html('');
+    studentEmailError.html('');
+    studentImageError.html('');
+}
+
+//reset course form validation error messages
+function resetCourseFormValidations() {
+    courseNameError.html('');
+    courseDescriptionError.html('');
+    courseImageError.html('');
+}
 
 //validate student form on submit
 function studentFormValidation() {
@@ -16,38 +30,54 @@ function studentFormValidation() {
 
     let formValidated = true;
 
-    if ($('#student-name').val().length < 3) {
-        $('#student-error-name').html('name cannot be that short');
+    let name = $('#student-name').val();
+    let number = $('#student-number').val();
+    let email = $('#student-email').val();
+    let img = $('#student-img').val();
+
+    if (name.length < 3) {
+        studentNameError.html('name cannot be that short');
         formValidated = false;
     }
 
-    let numberReg = /[0-9]/;
-    if (!numberReg.test($('#student-number').val())) {
-        $('#student-error-number').html('please enter a valid phone number');
+    if (!name) {
+        studentNameError.html('please enter a student name');
+        formValidated = false;
+    }
+
+    let numberReg = /0[1-9]{1,2}-?[0-9]{3}-?[0-9]{4}$/;
+    if (!numberReg.test(number)) {
+        studentPhoneError.html('please enter a valid Israeli phone number');
+        formValidated = false;
+    }
+
+    if (!number) {
+        studentPhoneError.html('please enter a phone number');
         formValidated = false;
     }
 
     let emailReg = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
-    if (!emailReg.test($('#student-email').val())) {
-        $('#student-error-email').html('please enter a valid email address');
+    if (!emailReg.test(email)) {
+        studentEmailError.html('please enter a valid email address');
         formValidated = false;
     }
 
-    /* if ($('#student-img') == null) {
-         $('#student-error-image').html('make sure you upload a file');
-     } */
+    if (!email) {
+        studentEmailError.html('please enter an email address');
+        formValidated = false;
+    }
 
-    if (!imageValidation()) {
-        $('#student-error-image').html('make sure you upload a file');
+    if (!img) {
+        studentImageError.html('upload an image!');
         return false;
     }
 
-    if (!formValidated) {
-        return false;
-    } else {
-        return true;
-    }
+    // if (!imageValidation()) {
+    //     studentImageError.html('make sure you upload a file');
+    //     formValidated = false;
+    // }
 
+   return formValidated;
 }
 
 
@@ -55,8 +85,14 @@ function imageValidation() {
     console.log('img check');
     window.URL = window.URL || window.webkitURL;
 
+    let imageIsValid = true;
+
     let fileInput = $('#student-img').find("input[type=file]")[0],
         file = fileInput.files && fileInput.files[0];
+
+    if (!file) {
+        imageIsValid = false;
+    }
 
     if (file) {
         let img = new Image();
@@ -69,51 +105,53 @@ function imageValidation() {
 
             window.URL.revokeObjectURL(img.src);
 
-            if (width == 400 && height == 300) {
-                return true;
-            } else {
-                return false;
+            if (width < 10 || width > 2000 || height < 10 || height > 2000) {
+                imageIsValid = false;
             }
         }
     }
-}
-
-
-//reset student form validation error messages
-function resetStudentFormValidations() {
-    studentNameError.html('');
-    studentPhoneError.html('');
-    studentEmailError.html('');
-    studentImageError.html('');
-}
-
-//reset course form validation error mesages
-function resetCourseFormValidations() {
-    courseNameError.html('');
-    courseDescriptionError.html('');
-    courseImageError.html('');
+    return imageIsValid;
 }
 
 
 //validate course form
-$('#course-validation').submit(function (e) {
+function courseFormValidation() {
 
     resetCourseFormValidations();
 
+    let name = $('#course-name').val();
+    let description = $('#course-description').val();
+    let img = $('#course-img').val();
+
     let formValidated = true;
 
-    if ($('#course-name').val().length < 3) {
-        $('#course-error-name').html('name cannot be that short');
+    if (name.length < 3) {
+        courseNameError.html('name cannot be that short');
         formValidated = false;
     }
 
-    if (formValidated) {
-        return true;
-    } else {
-        return false;
+    if (!name) {
+        courseNameError.html('please enter a course name');
+        formValidated = false;
     }
 
-});
+    if (description.length >500) {
+        courseDescriptionError.html('the course description cannot exceed 500 characters');
+        formValidated = false;
+    }
+
+    if(!description) {
+        courseDescriptionError.html('please enter a course description');
+        formValidated = false;
+    }
+
+    if (!img){
+        courseImageError.html('please upload a course image');
+        formValidated = false;
+    }
+
+    return formValidated;
+}
 
 //validate admin form
 

@@ -28,18 +28,14 @@
                 <input type="file" id="student-img" name="image">
                 <div id="student-error-image"></div>
             </div>
-
             <div class="form-group">
                 <label for="student-course">Courses</label>
                 @foreach($courses as $course)
                     <div class="form-inline">
                         <input type="checkbox" id="student-course" name="courses[]" value="{{ $course->id }}"> {{ $course->name}}
                     </div>
-
                 @endforeach
-
             </div>
-
             <div>
                 <input type="submit" class="btn btn-success" value="Add New Student">
             </div>
