@@ -54,9 +54,10 @@ function studentFormValidation() {
     let studentEmail = $('#student-email').val();
     let studentImage = $('#student-img').val();
 
-    let nameReg = /^[a-z][a-z '-.,]{2,30}$|^$/;
+    //let nameReg = /^[a-z]*([' ']?[a-z]*)?$/; check why this doesn't work. it sort of does...
+    let nameReg = /[a-z]*$/
     if (!nameReg.test(studentName)) {
-        studentNameError.html('the student\'s name must be between 3-30 characters');
+        studentNameError.html('enter letters only please');
         formValidated = false;
     }
 
@@ -144,7 +145,7 @@ function courseFormValidation() {
 
     let formValidated = true;
 
-    let nameReg = /^[a-z][a-z '-.,]{2,20}$|^$/;
+    let nameReg = /[a-z]*$/
     if (!nameReg.test(courseName)){
         courseNameError.html('the course name must be between 3-20 characters');
         formValidated = false;
@@ -188,9 +189,9 @@ function adminFormValidation() {
 
     let formValidated = true;
 
-    let nameReg = /^[a-z][a-z '-.,]{2,40}$|^$/;
+    let nameReg = /[a-z]*$/
     if (!nameReg.test(adminName)){
-        adminNameError.html('please enter a name between 3-40 characters');
+        adminNameError.html('enter a real name please');
         formValidated = false;
     }
 
