@@ -63,7 +63,7 @@
             <script src="/scripts/add-admin.js"></script>
             <script src="/scripts/show-admin.js"></script>
             <script src='/scripts/delete-admin.js'></script>
-
+            <script src='/scripts/validations.js'></script>
 
 
     @endpush

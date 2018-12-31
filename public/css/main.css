@@ -7,31 +7,32 @@ body{
 }
 */
 
-#student-error-name, #student-error-email, #student-error-number, #student-error-image, #course-error-name, #course-error-description, #course-error-image{
-    color:red;
-    font-size:1em;
-    font-weight:700;
+#student-error-name, #student-error-email, #student-error-number, #student-error-image, #course-error-name,
+#course-error-description, #course-error-image, #admin-error-name, #admin-error-role, #admin-error-number,
+#admin-error-email, #admin-error-password, #admin-error-image {
+    color: red;
+    font-size: 1em;
+    font-weight: 700;
     font-style: italic;
     text-transform: capitalize;
     padding-top: 14px;
-
 }
 
-nav, .student , .admin , .course {
+nav, .student, .admin, .course {
     text-transform: capitalize;
 }
 
-.registered-course-img , .registered-student-img{
-    height:50px;
-    width:50px;
-    margin-bottom:10px;
+.registered-course-img, .registered-student-img {
+    height: 50px;
+    width: 50px;
+    margin-bottom: 10px;
 }
 
-.student-image , .course-image{
-    margin-bottom:15px;
+.student-image, .course-image {
+    margin-bottom: 15px;
 }
 
-.student-name, .course-name, .admin-name{
-    font-size:1.5em;
-    text-transform:capitalize;
+.student-name, .course-name, .admin-name {
+    font-size: 1.5em;
+    text-transform: capitalize;
 }
