@@ -107,7 +107,7 @@ class CourseController extends Controller
         $course = Course::find($id);
 
         $studentsRegistered = Course::where('id',$id)->with('students')->first();
-        $numberStudentsRegistered = $studentsRegistered->students->count();
+        $numberStudentsRegistered = $studentsRegistered->students->count(); //this works
 
         return view('courses.edit-course', compact('course', 'numberStudentsRegistered'));
     }
@@ -116,7 +116,6 @@ class CourseController extends Controller
         try {
             $course = Course::find($id);
             $courseRelation = CourseStudent::where('course_id', $id)->get();
-           //find($$idid); id, student_id, course_id
 
             if ($course) {
                 $course->delete();
