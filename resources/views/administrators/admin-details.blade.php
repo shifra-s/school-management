@@ -22,7 +22,7 @@
             </div>
             <div class="col-md-9">
                 <!--need this to say the name of the role - so from the roles table -->
-                <span class="admin-role">{{$admin->role}}</span>
+                <span class="admin-role">{{$roleName}}</span>
             </div>
         </div>
 

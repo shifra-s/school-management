@@ -75,9 +75,21 @@ class AdministratorsController extends Controller
         //$admin = User::find($id);
         $admin = User::with('roles')->find($id);
         $roles = Role::get();
-        //dd($roles);
 
-        return view('administrators.admin-details', compact('admin', 'roles'));
+        //find the id in the admin table
+        $administrator= Administrator::find($id);
+
+        //this will get the role
+        $roleId = $administrator->role;
+
+        //find the specific role for this admin in the role table
+        $role = Role::where('id',$roleId)->first();
+
+        //the name of the admin's role from the role table
+        $roleName = $role->name;
+
+
+        return view('administrators.admin-details', compact('admin', 'roles', 'roleName'));
 
     }
 
