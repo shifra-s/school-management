@@ -101,37 +101,57 @@ function studentFormValidation() {
    return formValidated;
 }
 
-function imageValidation() {
-    console.log('img check');
-    window.URL = window.URL || window.webkitURL;
 
-    let imageIsValid = true;
+// function imageValidation(){
+//     let file = $('#student-img');
+//
+//     let fileUploadPath = file.value;
+//
+//     if (fileUploadPath = '') {
+//         alert("please upload an image");
+//     } else {
+//         let extension = fileUploadPath.substring(fileUploadPath.lastIndexOf('.') + 1).toLowerCase();
+//
+//         if (extension == "gif" || extension == "jpeg" || extension == "jpg" || extension == "png") {
+//             if (file.files && file.files[0]) {
+//                 let size
+//             }
+//         }
+//     }
+// }
 
-    let fileInput = $('#student-img').find("input[type=file]")[0],
-        file = fileInput.files && fileInput.files[0];
 
-    if (!file) {
-        imageIsValid = false;
-    }
-
-    if (file) {
-        let img = new Image();
-
-        img.src = window.URL.createObjectURL(file);
-
-        img.onload = function () {
-            let width = img.naturalWidth,
-                height = img.naturalHeight;
-
-            window.URL.revokeObjectURL(img.src);
-
-            if (width < 10 || width > 2000 || height < 10 || height > 2000) {
-                imageIsValid = false;
-            }
-        }
-    }
-    return imageIsValid;
-}
+// function imageValidation() {
+//     console.log('img check');
+//     window.URL = window.URL || window.webkitURL;
+//
+//     let imageIsValid = true;
+//
+//     let fileInput = $('#student-img').find("input[type=file]")[0],
+//         file = fileInput.files && fileInput.files[0];
+//
+//     if (!file) {
+//         imageIsValid = false;
+//     }
+//
+//     if (file) {
+//         let img = new Image();
+//
+//         img.src = window.URL.createObjectURL(file);
+//
+//         img.onload = function () {
+//             let width = img.naturalWidth,
+//                 height = img.naturalHeight;
+//
+//             window.URL.revokeObjectURL(img.src);
+//
+//             if (width < 10 || width > 2000 || height < 10 || height > 2000) {
+//                 imageIsValid = false;
+//             }
+//         }
+//     }
+//     return imageIsValid;
+// }
 
 
 //validate course form
@@ -178,7 +198,7 @@ function courseFormValidation() {
 
 function adminFormValidation() {
 
-    resetAdminFormValidations();
+    //resetAdminFormValidations();
 
     let adminName = $('#admin-name').val();
     let adminRole = $('#admin-role').val();
@@ -228,7 +248,7 @@ function adminFormValidation() {
 
     let strongPwdReg = /^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#\$%\^&\*])(?=.{8,})/;
     if (!strongPwdReg.test(adminPassword)) {
-        adminPasswordError('your password must be at least eight characters long, include an uppercase and lowercase letter, a special character, and a digit!');
+        adminPasswordError.html('your password must be at least eight characters long, include an uppercase and lowercase letter, a special character, and a digit!');
         formValidated = false;
     }
 
