@@ -115,11 +115,10 @@ class CourseController extends Controller
     public function delete($id) {
         try {
             $course = Course::find($id);
-            $courseRelation = CourseStudent::where('course_id', $id)->get();
 
             if ($course) {
                 $course->delete();
-                $courseRelation->delete();
+                CourseStudent::where('course_id', $id)->delete();
             }
             $count = Course::count();
             //return json encoded array
@@ -129,4 +128,3 @@ class CourseController extends Controller
         }
     }
 }
-
