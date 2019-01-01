@@ -36,3 +36,19 @@ nav, .student, .admin, .course {
     font-size: 1.5em;
     text-transform: capitalize;
 }
+
+/*.panel > .panel-heading {*/
+    /*background-color: red;*/
+    /*color:white;*/
+
+/*}*/
+
+.collapse > ul > li > a {
+    line-height: 100px;
+}
+
+.navbar-logo{
+    height:97px;
+    margin-top:15px;
+    margin-left:-65px;
+}

@@ -47,7 +47,7 @@
             <!-- Branding Image -->
             <a class="navbar-brand" href="{{ url('/') }}">
                 <a href="#" class="navbar-left">
-                    <img src="/imgs/john_bryce_logo.jpg" alt="jb-logo" style="width:140px; height:100px; padding:5px">
+                    <img class="navbar-logo" src="/imgs/john_bryce_logo.jpg" alt="jb-logo">
                 </a>
             </a>
         </div>
