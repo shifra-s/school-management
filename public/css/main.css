@@ -7,6 +7,20 @@ body{
 }
 */
 
+/*html body #app-layout {*/
+    /*!*font-family: 'Abel', sans-serif;*!*/
+    /*font-family: 'Cabin', sans-serif;*/
+
+/*}*/
+
+/*!*body {*!*/
+    /*!*font-family: 'Lato';*!*/
+/*!*}*!*/
+
+.fa-btn {
+    margin-right: 6px;
+}
+
 #student-error-name, #student-error-email, #student-error-number, #student-error-image, #course-error-name,
 #course-error-description, #course-error-image, #admin-error-name, #admin-error-role, #admin-error-number,
 #admin-error-email, #admin-error-password, #admin-error-image {
@@ -44,11 +58,93 @@ nav, .student, .admin, .course {
 /*}*/
 
 .collapse > ul > li > a {
-    line-height: 100px;
+    line-height: 20px;
 }
 
-.navbar-logo{
-    height:97px;
-    margin-top:15px;
-    margin-left:-65px;
+img {
+    max-width: 100%;
 }
+
+.panel-body {
+    font-size:1.1em;
+}
+
+.panel-default>div.panel-heading{
+    font-size: 2em;
+    /*background-color: plum;*/
+    background-color:  #9068be;
+    color: white;
+}
+
+div.panel-default{
+    border: 1px lightgrey solid;
+}
+
+.navbar-brand{
+    padding: 0;
+}
+
+.navbar-header{
+    padding:15px 15px;
+}
+
+.navbar-toggle{
+    float:none;
+}
+
+.navbar-default .navbar-collapse, .navbar-default .navbar-form{
+    border:none;
+}
+
+#app-navbar-collapse{
+    margin-top:40px;
+}
+
+/*.mobile-logo > .navbar-left > .navbar-logo{*/
+    /*display:none;*/
+/*}*/
+
+/*@media screen and (max-width: 768px) {*/
+    /*.mobile-logo > .navbar-left > .navbar-logo {*/
+        /*display: inline-block;*/
+    /*}*/
+    /*.mobile-logo > .navbar-brand{*/
+        /*padding:0;*/
+    /*}*/
+/*}*/
+
+@media screen and (max-width: 768px) {
+    #user-img {
+        margin-right:10px;
+        position:relative;
+        right:10px;
+    }
+    .navbar-right{
+        text-align:center;
+    }
+    .dropdown-menu > li{
+        text-align:center;
+    }
+    .dropdown-toggle {
+        position: relative;
+        left: 40px;
+    }
+    .navbar-toggle {
+        position: relative;
+        top: 20px;
+        left: 2px;
+    }
+    #user-details{
+        margin-right: 10%;
+    }
+
+}
+
+li > a:hover{
+    background-color:yellow;
+}
+
+.navbar-links{
+    margin-top:1%;
+}
+
