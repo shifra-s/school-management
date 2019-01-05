@@ -13,7 +13,7 @@
             </div>
             <div class="form-group">
                 <label for="student-number">Phone Number</label>
-                <input type="text" class="form-control" id="student-number" maxlength="15" name="phone"
+                <input type="number" class="form-control" id="student-number" maxlength="15" name="phone"
                        placeholder="Enter Phone Number">
                 <div id="student-error-number"></div>
             </div>
