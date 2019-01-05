@@ -5,7 +5,7 @@
     <div class="col-md-12">
         <!--list all courses -->
         <div class="col-md-3">
-            <h4>Courses <i class="fa fa-plus" id="add-course"></i></h4>
+            <h4 id="courses-header">Courses <i class="fa fa-plus" id="add-course"></i></h4>
             @if(count($courses))
                 <table class="table" id="course-table">
                     <thead>
@@ -33,7 +33,7 @@
 
         <!--list all students -->
         <div class="col-md-3">
-            <h4>Students <i class="fa fa-plus" id="add-student"></i></h4>
+            <h4 id="students-header">Students <i class="fa fa-plus" id="add-student"></i></h4>
             @if(count($students))
                 <table class="table" id="student-table">
                     <thead>
