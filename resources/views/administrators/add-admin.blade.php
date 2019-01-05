@@ -12,12 +12,17 @@
             </div>
             <div class="form-group">
                 <label for="admin-role">Role</label>
-                <input type="text" class="form-control" id="admin-role" name="role" placeholder="Enter Role">
+                <select class="form-control" id="admin-role" name="role">
+                    <option value=''>Select a role</option>
+                    <option value="1">Owner</option>
+                    <option value="2">Manager</option>
+                    <option value="3">Sales</option>
+                </select>
                 <div id="admin-error-role"></div>
             </div>
             <div class="form-group">
                 <label for="admin-number">Phone Number</label>
-                <input type="text" class="form-control" id="admin-number" name="phone" placeholder="Enter Phone Number">
+                <input type="number" class="form-control" id="admin-number" name="phone" placeholder="Enter Phone Number">
                 <div id="admin-error-number"></div>
             </div>
             <div class="form-group">
