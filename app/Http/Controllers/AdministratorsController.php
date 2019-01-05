@@ -50,7 +50,7 @@ class AdministratorsController extends Controller
             $filename = str_random(12);
             //get the extension of the file uploaded by the user
             $extension = $photo->getClientOriginalExtension();
-            //validate if the user supplied file's extension matches allowed extension
+            //validate if file's extension matches allowed extension
             if (in_array($extension, $allowedext)) {
                 //if every thing goes fine move the file
                 $request->file('image')->move($destinationPath, $filename . '.' . $extension);
@@ -59,11 +59,21 @@ class AdministratorsController extends Controller
         }
 
         $admin = new User;
-        $admin->fill(array_except($request->all(), ['_token', 'image']));
+
+        $admin->fill(array_except($request->all(), ['_token', 'image','password']));
         if (isset($filename)) {
             $admin->image = $filename . '.' . $extension;
         }
-        dd('saving admin');
+        if (isset($request->password)) {
+            $admin->password = bcrypt($request->password);
+        }
+        if (isset($request->role)) {
+            $admin->role = (int) $request->role;
+        }
+        if (isset($request->phone)) {
+            $admin->phone = $request->phone;
+        }
+
         $admin->save();
 
         return redirect()->back();
@@ -72,7 +82,6 @@ class AdministratorsController extends Controller
     //show info of any selected admin
     public function show($id)
     {
-        //$admin = User::find($id);
         $admin = User::with('roles')->find($id);
         $roles = Role::get();
 
