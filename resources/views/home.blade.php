@@ -5,7 +5,7 @@
         <div class="row">
             <div class="col-md-10 col-md-offset-1">
                 <div class="panel panel-default">
-                    <div class="panel-heading">{{ \Auth::check() ? 'Welcome, ' . \Auth::user()->name . '!': 'Please log in!'}}
+                    <div class="panel-heading">{{ \Auth::check() ? 'Welcome, ' . \Auth::user()->name . '!': 'Welcome to JB Management: A Platform for Managing Students, Administrators, and Courses'}}
                     </div>
                     <div class="panel-body">
                         {{--{{ \Auth::check() ? 'Using this platform, you can manage courses and student registration.' : ''}}--}}
@@ -31,7 +31,7 @@
                             <p>To do so, click on the "Schools" tab.</p>
 
                         @else
-                            <p></p>
+                            <p style="font-size:1.5em;">Please log in!</p>
 
                         @endif
 
