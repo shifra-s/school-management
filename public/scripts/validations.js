@@ -1,3 +1,5 @@
+//error messages used in multiple functions below
+
 var studentNameError = $('#student-error-name');
 var studentPhoneError = $('#student-error-number');
 var studentEmailError = $('#student-error-email');
@@ -16,6 +18,50 @@ var adminEmailError = $('#admin-error-email');
 var adminPasswordError = $('#admin-error-password');
 var adminImageError = $('#admin-error-image');
 
+function fileValidation(imageId, imageError) {
+
+    if (!imageId.val()) {
+        imageError.html("please upload an image");
+        return false;
+    }
+
+    let fileInput = imageId[0].files[0];
+    console.log(fileInput)
+    let extension = fileInput.type;
+
+    if (fileInput.size > 2000000) {
+        imageError.html("file size is too large");
+        return false;
+    } else if (extension !== "image/gif" && extension !== "image/jpeg" && extension !== "image/jpg" && extension !== "image/png") {
+        imageError.html('enter correct file type');
+        return false;
+    } else if (!checkImgDimension(fileInput)) {
+        return false;
+    } else {
+        return true;
+    }
+}
+
+function checkImgDimension(fileInput, imageError) {
+    let img = new Image();
+    img.src = window.URL.createObjectURL(fileInput);
+
+    img.onload = function () {
+        let width = img.naturalWidth,
+            height = img.naturalHeight;
+
+        console.log(width);
+        console.log(height);
+
+        window.URL.revokeObjectURL(img.src);
+
+        if (width < 100 || width > 2000 || height < 100 || height > 2000) {
+            imageError.html('image dimensions must have a width of 100-2000 and a height of 100-2000')
+            return false;
+        }
+        return true;
+    }
+}
 
 //reset student form validation error messages
 function resetStudentFormValidations() {
@@ -52,7 +98,9 @@ function studentFormValidation() {
     let studentName = $('#student-name').val();
     let studentNumber = $('#student-number').val();
     let studentEmail = $('#student-email').val();
-    let studentImage = $('#student-img').val();
+    let studentImage = $('#student-img');
+
+    let imageError = studentImageError;
 
     //let nameReg = /^[a-z]*([' ']?[a-z]*)?$/; check why this doesn't work. it sort of does...
     let nameReg = /[a-z]*$/
@@ -88,71 +136,12 @@ function studentFormValidation() {
         formValidated = false;
     }
 
-    if (!studentImage) {
-        studentImageError.html('upload an image!');
+    if (fileValidation(studentImage, imageError)) {
         return false;
     }
 
-    // if (!imageValidation()) {
-    //     studentImageError.html('make sure you upload a file');
-    //     formValidated = false;
-    // }
-
    return formValidated;
 }
-
-
-// function imageValidation(){
-//     let file = $('#student-img');
-//
-//     let fileUploadPath = file.value;
-//
-//     if (fileUploadPath = '') {
-//         alert("please upload an image");
-//     } else {
-//         let extension = fileUploadPath.substring(fileUploadPath.lastIndexOf('.') + 1).toLowerCase();
-//
-//         if (extension == "gif" || extension == "jpeg" || extension == "jpg" || extension == "png") {
-//             if (file.files && file.files[0]) {
-//                 let size
-//             }
-//         }
-//     }
-// }
-
-
-// function imageValidation() {
-//     console.log('img check');
-//     window.URL = window.URL || window.webkitURL;
-//
-//     let imageIsValid = true;
-//
-//     let fileInput = $('#student-img').find("input[type=file]")[0],
-//         file = fileInput.files && fileInput.files[0];
-//
-//     if (!file) {
-//         imageIsValid = false;
-//     }
-//
-//     if (file) {
-//         let img = new Image();
-//
-//         img.src = window.URL.createObjectURL(file);
-//
-//         img.onload = function () {
-//             let width = img.naturalWidth,
-//                 height = img.naturalHeight;
-//
-//             window.URL.revokeObjectURL(img.src);
-//
-//             if (width < 10 || width > 2000 || height < 10 || height > 2000) {
-//                 imageIsValid = false;
-//             }
-//         }
-//     }
-//     return imageIsValid;
-// }
-
 
 //validate course form
 function courseFormValidation() {
@@ -161,7 +150,9 @@ function courseFormValidation() {
 
     let courseName = $('#course-name').val();
     let courseDescription = $('#course-description').val();
-    let courseImage = $('#course-img').val();
+    let courseImage = $('#course-img');
+
+    let imageError = courseImageError;
 
     let formValidated = true;
 
@@ -186,9 +177,8 @@ function courseFormValidation() {
         formValidated = false;
     }
 
-    if (!courseImage){
-        courseImageError.html('please upload a course image');
-        formValidated = false;
+    if (fileValidation(courseImage, imageError)) {
+        return false;
     }
 
     return formValidated;
@@ -198,14 +188,16 @@ function courseFormValidation() {
 
 function adminFormValidation() {
 
-    //resetAdminFormValidations();
+    resetAdminFormValidations();
 
     let adminName = $('#admin-name').val();
     let adminRole = $('#admin-role').val();
     let adminNumber = $('#admin-number').val();
     let adminEmail = $('#admin-email').val();
     let adminPassword = $('#admin-pwd').val();
-    let adminImage = $('#admin-img').val();
+    let adminImage = $('#admin-img');
+
+    let imageError = adminImageError;
 
     let formValidated = true;
 
@@ -220,8 +212,8 @@ function adminFormValidation() {
         formValidated = false;
     }
 
-    if(!adminRole) {
-        adminRoleError.html('please assign a role for the admin: owner[1], manager[2], or sales[3])')
+    if(adminRole == '') {
+        adminRoleError.html('please assign a role for the admin')
     }
 
     let numberReg =  /0[1-9]{1,2}-?[0-9]{3}-?[0-9]{4}$/;
@@ -246,8 +238,9 @@ function adminFormValidation() {
         formValidated = false;
     }
 
-    let strongPwdReg = /^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#\$%\^&\*])(?=.{8,})/;
-    if (!strongPwdReg.test(adminPassword)) {
+    //let strongPwdReg = /^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#\$%\^&\*])(?=.{8,})/;
+    let weakPwdReg = /[\w\d]{4,8}/;
+    if (!weakPwdReg.test(adminPassword)) {
         adminPasswordError.html('your password must be at least eight characters long, include an uppercase and lowercase letter, a special character, and a digit!');
         formValidated = false;
     }
@@ -257,9 +250,8 @@ function adminFormValidation() {
         formValidated = false;
     }
 
-    if (!adminImage) {
-        adminImageError.html('please make sure to upload a photo of the admin');
-        formValidated = false;
+    if (fileValidation(adminImage, imageError)) {
+        return false;
     }
 
     return formValidated;
