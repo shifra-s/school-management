@@ -25,7 +25,7 @@
 <body id="app-layout">
 <nav class="navbar navbar-default navbar-static-top">
     <div class="container-fluid">
-        <div class="row">
+        <div class="row" id="full-navbar">
             <div class="col-md-3 col-sm-3 hidden-xs navbar-header">
 
                 <!-- Branding Image -->
