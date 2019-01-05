@@ -32,7 +32,7 @@ body{
     padding-top: 14px;
 }
 
-nav, .student, .admin, .course {
+nav, .student, .admin, .course, label {
     text-transform: capitalize;
 }
 
@@ -71,8 +71,8 @@ img {
 
 .panel-default>div.panel-heading{
     font-size: 2em;
-    /*background-color: plum;*/
-    background-color:  #9068be;
+    /*background-color:  #9068be;*/
+    background-color:#6E3878;
     color: white;
 }
 
@@ -88,6 +88,10 @@ div.panel-default{
     padding:15px 15px;
 }
 
+#full-navbar{
+    background-color:#2c2c2c;
+}
+
 .navbar-toggle{
     float:none;
 }
@@ -99,19 +103,6 @@ div.panel-default{
 #app-navbar-collapse{
     margin-top:40px;
 }
-
-/*.mobile-logo > .navbar-left > .navbar-logo{*/
-    /*display:none;*/
-/*}*/
-
-/*@media screen and (max-width: 768px) {*/
-    /*.mobile-logo > .navbar-left > .navbar-logo {*/
-        /*display: inline-block;*/
-    /*}*/
-    /*.mobile-logo > .navbar-brand{*/
-        /*padding:0;*/
-    /*}*/
-/*}*/
 
 @media screen and (max-width: 768px) {
     #user-img {
@@ -140,11 +131,48 @@ div.panel-default{
 
 }
 
-li > a:hover{
-    background-color:yellow;
-}
 
 .navbar-links{
     margin-top:1%;
 }
 
+.navbar-default .navbar-nav>li>a {
+    color: white;
+}
+
+.navbar-default .navbar-nav>li>a:focus, .navbar-default .navbar-nav>li>a:hover {
+   color:#6E3878;
+}
+
+td{
+    font-size: 1.2em;
+}
+
+#students-header, #courses-header, #admins-header{
+    font-size:1.5em;
+}
+
+#user-img{
+    padding:0;
+    border: none;
+}
+
+img.img-thumbnail{
+    border: 1px #C5ABB7 solid;
+    padding: 0;
+}
+
+.admin-role{
+    text-transform: capitalize;
+}
+
+.admin-edit, .student-edit, .course-edit{
+    background-color:#E55565;
+    border:none;
+
+}
+
+.admin-edit:hover, .course-edit:hover, .student-edit:hover{
+    background-color: #C5ABB7;
+    border:none;
+}
