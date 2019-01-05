@@ -26,8 +26,9 @@ class AdminSaveRequest extends Request
         return [
             'name' => 'required',
             'email' => 'required|email',
-            'number' => 'required|numeric',
-            'image' => 'required|image|dimensions:min_width=10,min_height=10|dimensions:max_width=2000,max_height=2000'
+            'phone' => 'required|numeric',
+            'password'=>'required',
+            'image' => 'required|image|max:2000|dimensions:min_width=100,min_height=100|dimensions:max_width=2000,max_height=2000'
         ];
     }
 }
