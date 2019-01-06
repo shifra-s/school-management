@@ -1,4 +1,9 @@
 
+body#app-layout{
+    font-family: 'Lato', sans-serif;
+    font-family: 'Montserrat', sans-serif;
+    font-family: 'Karla', sans-serif;
+}
 
 .fa-btn {
     margin-right: 6px;
@@ -31,6 +36,7 @@ nav, .student, .admin, .course, label, .student-courses-name, .admin-role, .cour
 .student-name, .course-name, .admin-name {
     font-size: 1.5em;
     text-transform: capitalize;
+    font-weight:700;
 }
 
 .collapse > ul > li > a {
@@ -42,12 +48,11 @@ img {
 }
 
 .panel-body {
-    font-size:1.1em;
+    font-size:1.3em;
 }
 
 .panel-default>div.panel-heading{
     font-size: 2em;
-    /*background-color:  #9068be;*/
     background-color:#6E3878;
     color: white;
 }
@@ -107,25 +112,31 @@ div.panel-default{
 
 }
 
+#login {
+    font-size:1.2em;
+    margin-top: 65%;
+}
 
 .navbar-links{
     margin-top:1%;
+    font-size:1.3em;
 }
 
 .navbar-default .navbar-nav>li>a {
     color: white;
 }
 
-.navbar-default .navbar-nav>li>a:focus, .navbar-default .navbar-nav>li>a:hover {
+.navbar-links>li>a:focus, .navbar-default .navbar-nav>li>a:hover {
    color:#6E3878;
+   font-size: 1.4em;
 }
 
 td{
-    font-size: 1.2em;
+    font-size: 1.5em;
 }
 
 #students-header, #courses-header, #admins-header{
-    font-size:1.5em;
+    font-size:1.7em;
 }
 
 #user-img{
@@ -147,4 +158,12 @@ img.img-thumbnail{
 .admin-edit:hover, .course-edit:hover, .student-edit:hover{
     background-color: #C5ABB7;
     border:none;
+}
+
+h4{
+    font-size:1em;
+}
+
+#user-details{
+    font-size:1.2em;
 }
