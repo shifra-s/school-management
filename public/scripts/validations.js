@@ -29,19 +29,25 @@ function fileValidation(imageId, imageError) {
     console.log(fileInput)
     let extension = fileInput.type;
 
-    if (fileInput.size > 2000000) {
-        imageError.html("file size is too large");
+    //validate file type
+    if (extension !== "image/gif" && extension !== "image/jpeg" && extension !== "image/jpg" && extension !== "image/png") {
+        imageError.html('the file extension must be either png, jpeg, jpg, orgif');
         return false;
-    } else if (extension !== "image/gif" && extension !== "image/jpeg" && extension !== "image/jpg" && extension !== "image/png") {
-        imageError.html('enter correct file type');
+
+        //validate image size
+    } else if (fileInput.size > 2000000) {
+        imageError.html("the file size is too large");
         return false;
-    } else if (!checkImgDimension(fileInput)) {
+
+        //validate the image dimensions
+    } else if (!checkImgDimension(fileInput, imageError)) {
         return false;
     } else {
         return true;
     }
 }
 
+//function to validate image dimensions
 function checkImgDimension(fileInput, imageError) {
     let img = new Image();
     img.src = window.URL.createObjectURL(fileInput);
@@ -49,9 +55,6 @@ function checkImgDimension(fileInput, imageError) {
     img.onload = function () {
         let width = img.naturalWidth,
             height = img.naturalHeight;
-
-        console.log(width);
-        console.log(height);
 
         window.URL.revokeObjectURL(img.src);
 
@@ -78,7 +81,7 @@ function resetCourseFormValidations() {
     courseImageError.html('');
 }
 
-//reset course form validation error messages
+//reset admin form validation error messages
 function resetAdminFormValidations() {
     adminNameError.html('');
     adminRoleError.html('');
@@ -136,11 +139,12 @@ function studentFormValidation() {
         formValidated = false;
     }
 
-    if (fileValidation(studentImage, imageError)) {
-        return false;
+    if (!fileValidation(studentImage, imageError)) {
+        console.log(formValidated);
+        formValidated = false;
     }
 
-   return formValidated;
+    return formValidated;
 }
 
 //validate course form
@@ -157,7 +161,7 @@ function courseFormValidation() {
     let formValidated = true;
 
     let nameReg = /[a-z]*$/
-    if (!nameReg.test(courseName)){
+    if (!nameReg.test(courseName)) {
         courseNameError.html('the course name must be between 3-20 characters');
         formValidated = false;
     }
@@ -167,18 +171,18 @@ function courseFormValidation() {
         formValidated = false;
     }
 
-    if (courseDescription.length >500) {
+    if (courseDescription.length > 500) {
         courseDescriptionError.html('the course description cannot exceed 500 characters');
         formValidated = false;
     }
 
-    if(!courseDescription) {
+    if (!courseDescription) {
         courseDescriptionError.html('please enter a course description');
         formValidated = false;
     }
 
-    if (fileValidation(courseImage, imageError)) {
-        return false;
+    if (!fileValidation(courseImage, imageError)) {
+        formValidated = false;
     }
 
     return formValidated;
@@ -202,7 +206,7 @@ function adminFormValidation() {
     let formValidated = true;
 
     let nameReg = /[a-z]*$/
-    if (!nameReg.test(adminName)){
+    if (!nameReg.test(adminName)) {
         adminNameError.html('enter a real name please');
         formValidated = false;
     }
@@ -212,11 +216,11 @@ function adminFormValidation() {
         formValidated = false;
     }
 
-    if(adminRole == '') {
+    if (adminRole == '') {
         adminRoleError.html('please assign a role for the admin')
     }
 
-    let numberReg =  /0[1-9]{1,2}-?[0-9]{3}-?[0-9]{4}$/;
+    let numberReg = /0[1-9]{1,2}-?[0-9]{3}-?[0-9]{4}$/;
     if (!numberReg.test(adminNumber)) {
         adminNumberError.html('you need to enter a valid Israeli phone number');
         formValidated = false;
@@ -250,8 +254,8 @@ function adminFormValidation() {
         formValidated = false;
     }
 
-    if (fileValidation(adminImage, imageError)) {
-        return false;
+    if (!fileValidation(adminImage, imageError)) {
+        formValidated = false;
     }
 
     return formValidated;
