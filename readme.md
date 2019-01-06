@@ -8,9 +8,12 @@ I used Laravel (a PHP framework) for this project. Documentation for the framewo
 2. Download laravel using composer(composer global require laravel/installer in the cmd line).
 You can go to [here](https://laravel.com/docs/5.7/installation) for guidance.
 
-### To serve the Application: 
+### To Serve the Application: 
 Type php artisan serve into the cmd line. Then, go to http://localhost:8000.
 
 ### Login Credentials:
-Username: Shifra\
+Username: shifra@jb.com
 Password: 123456
+
+### Download my DB tables:
+You can download the database [here](database/school_management.mssql)
