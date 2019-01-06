@@ -25,6 +25,8 @@ $(document).on('click', '#delete-admin-btn', function () {
                         swal("Okay, the administrator " + info.name + " has been deleted!", {
                             icon: "success",
                         });
+                        $('#admin-details-section').hide();
+                        $('#admin-count').show();
                     } else {
                         swal("Something went wrong", {icon: "error"});
                     }
@@ -34,3 +36,5 @@ $(document).on('click', '#delete-admin-btn', function () {
             }
         });
 });
+
+

@@ -29,6 +29,8 @@ function fileValidation(imageId, imageError) {
     console.log(fileInput)
     let extension = fileInput.type;
 
+
+
     //validate file type
     if (extension !== "image/gif" && extension !== "image/jpeg" && extension !== "image/jpg" && extension !== "image/png") {
         imageError.html('the file extension must be either png, jpeg, jpg, orgif');
@@ -62,8 +64,9 @@ function checkImgDimension(fileInput, imageError) {
             imageError.html('image dimensions must have a width of 100-2000 and a height of 100-2000')
             return false;
         }
-        return true;
     }
+
+    return true;
 }
 
 //reset student form validation error messages
