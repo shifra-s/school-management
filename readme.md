@@ -15,5 +15,5 @@ Type php artisan serve into the cmd line. Then, go to http://localhost:8000.
 Username: shifra@jb.com
 Password: 123456
 
-###
+### Download my DB tables:
 You can download the database [here](database/school_management.mssql)
