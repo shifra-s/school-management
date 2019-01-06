@@ -1,4 +1,3 @@
-
 //on click recognizes all elements-including ones loading dynamically
 $(document).on('click', '#delete-course-btn', function () {
     var info = $(this).data('info');
@@ -24,7 +23,13 @@ $(document).on('click', '#delete-course-btn', function () {
                         }
                         swal("Okay, the " + info.name + " course has been deleted!", {
                             icon: "success",
+
                         });
+
+                        //replace main container with the general info
+
+                        $('#student-details-section').hide();
+                        $('#general-info-school').show();
                     } else {
                         swal("Something went wrong", {icon: "error"});
                     }

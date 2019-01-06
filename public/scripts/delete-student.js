@@ -26,6 +26,8 @@ $(document).on('click', '#delete-student-btn', function () {
                         swal('Okay, ' + info.name + ' has been deleted!', {
                             icon: "success",
                         });
+                        $('#student-details-section').hide();
+                        $('#general-info-school').show();
                     } else {
                         swal("Something went wrong", {icon: "error"});
                     }
