@@ -3,7 +3,7 @@
 $(document).on('click', '#delete-admin-btn', function () {
     var info = $(this).data('info');
     var token = $('meta[name="token"]').attr("content");
-    console.log(info);
+    //console.log(info);
     swal({
         title: "Are you sure?",
         text: "This will delete admin " + info.name,

@@ -4,7 +4,6 @@
 $(document).on('click', '#delete-student-btn', function () {
     var info = $(this).data('info');
     var token = $('meta[name="token"]').attr("content");
-    console.log(info);
     swal({
         title: "Are you sure?",
         text: "This will delete student " + info.name,
@@ -14,7 +13,7 @@ $(document).on('click', '#delete-student-btn', function () {
     })
         .then((willDelete) => {
             if (willDelete) {
-                console.log(token);
+                //console.log(token);
                 $.post('/student/delete/' + info.id, {'_token': token}, function (data) {
                     //json.parse is an internal js function
                     var parsed = JSON.parse(data);

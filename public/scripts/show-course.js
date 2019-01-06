@@ -5,7 +5,7 @@ $('.course').click(function () { //api with jquery
     $.get('/course/' + courseId, function (data) {
 
         if (data) {
-            console.log(data);
+            //console.log(data);
             //when we receive the data, display the data (when a course is clicked)
             $('#student-details-section').html(data);
             displayDetailsSection();
