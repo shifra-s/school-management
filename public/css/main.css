@@ -1,37 +1,150 @@
-/*
-body{
-    background-image: url('/imgs/coding_bg.jpeg');
-    font-family: 'Dosis', sans-serif;
-    margin: auto 0;
-    background-size: 100%;
-}
-*/
 
-#student-error-name, #student-error-email, #student-error-number, #student-error-image, #course-error-name, #course-error-description{
-    color:red;
-    font-size:1em;
-    font-weight:700;
+
+.fa-btn {
+    margin-right: 6px;
+}
+
+#student-error-name, #student-error-email, #student-error-number, #student-error-image, #course-error-name,
+#course-error-description, #course-error-image, #admin-error-name, #admin-error-role, #admin-error-number,
+#admin-error-email, #admin-error-password, #admin-error-image {
+    color: red;
+    font-size: .8em;
     font-style: italic;
     text-transform: capitalize;
     padding-top: 14px;
-
 }
 
-nav, .student , .admin , .course {
+nav, .student, .admin, .course, label, .student-courses-name, .admin-role, .course-register-list, #student-course {
     text-transform: capitalize;
 }
 
-.registered-course-img , .registered-student-img{
-    height:50px;
-    width:50px;
-    margin-bottom:10px;
+.registered-course-img, .registered-student-img {
+    height: 50px;
+    width: 50px;
+    margin-bottom: 10px;
 }
 
-.student-image , .course-image{
-    margin-bottom:15px;
+.student-image, .course-image {
+    margin-bottom: 15px;
 }
 
-.student-name, .course-name, .admin-name{
+.student-name, .course-name, .admin-name {
+    font-size: 1.5em;
+    text-transform: capitalize;
+}
+
+.collapse > ul > li > a {
+    line-height: 20px;
+}
+
+img {
+    max-width: 100%;
+}
+
+.panel-body {
+    font-size:1.1em;
+}
+
+.panel-default>div.panel-heading{
+    font-size: 2em;
+    /*background-color:  #9068be;*/
+    background-color:#6E3878;
+    color: white;
+}
+
+div.panel-default{
+    border: 1px lightgrey solid;
+}
+
+.navbar-brand{
+    padding: 0;
+}
+
+.navbar-header{
+    padding:15px 15px;
+}
+
+#full-navbar{
+    background-color:#2c2c2c;
+}
+
+.navbar-toggle{
+    float:none;
+}
+
+.navbar-default .navbar-collapse, .navbar-default .navbar-form{
+    border:none;
+}
+
+#app-navbar-collapse{
+    margin-top:40px;
+}
+
+@media screen and (max-width: 768px) {
+    #user-img {
+        margin-right:10px;
+        position:relative;
+        right:10px;
+    }
+    .navbar-right{
+        text-align:center;
+    }
+    .dropdown-menu > li{
+        text-align:center;
+    }
+    .dropdown-toggle {
+        position: relative;
+        left: 40px;
+    }
+    .navbar-toggle {
+        position: relative;
+        top: 20px;
+        left: 2px;
+    }
+    #user-details{
+        margin-right: 10%;
+    }
+
+}
+
+
+.navbar-links{
+    margin-top:1%;
+}
+
+.navbar-default .navbar-nav>li>a {
+    color: white;
+}
+
+.navbar-default .navbar-nav>li>a:focus, .navbar-default .navbar-nav>li>a:hover {
+   color:#6E3878;
+}
+
+td{
+    font-size: 1.2em;
+}
+
+#students-header, #courses-header, #admins-header{
     font-size:1.5em;
-    text-transform:capitalize;
+}
+
+#user-img{
+    padding:0;
+    border: none;
+}
+
+img.img-thumbnail{
+    border: 1px #C5ABB7 solid;
+    padding: 0;
+}
+
+.admin-edit, .student-edit, .course-edit{
+    background-color:#E55565;
+    border:none;
+
+}
+
+.admin-edit:hover, .course-edit:hover, .student-edit:hover{
+    background-color: #C5ABB7;
+    border:none;
 }

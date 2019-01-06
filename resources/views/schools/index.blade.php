@@ -5,7 +5,7 @@
     <div class="col-md-12">
         <!--list all courses -->
         <div class="col-md-3">
-            <h4>Courses <i class="fa fa-plus" id="add-course"></i></h4>
+            <h4 id="courses-header">Courses <i class="fa fa-plus" id="add-course"></i></h4>
             @if(count($courses))
                 <table class="table" id="course-table">
                     <thead>
@@ -33,7 +33,7 @@
 
         <!--list all students -->
         <div class="col-md-3">
-            <h4>Students <i class="fa fa-plus" id="add-student"></i></h4>
+            <h4 id="students-header">Students <i class="fa fa-plus" id="add-student"></i></h4>
             @if(count($students))
                 <table class="table" id="student-table">
                     <thead>
@@ -62,7 +62,7 @@
 
             <!-- Show the number of courses and students -->
             <div id="info-wrapper">
-                <div class="panel panel-default">
+                <div class="panel panel-default" id="general-info-school">
                     <div class="panel-heading">
                         <h4>General Info</h4>
                     </div>
@@ -85,6 +85,11 @@
                             Please select a student or course from the list to view/edit the details.
                         </div>
                     </div>
+                </div>
+                @include('schools.add-student')
+                @include('courses.add-course')
+                <div id="student-details-section" style="display: none">
+
                 </div>
             </div>
 
@@ -116,9 +121,6 @@
 
 
 @endpush
-
-@include('schools.add-student')
-@include('courses.add-course')
 
 
 @push('styles')

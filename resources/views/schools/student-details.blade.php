@@ -44,3 +44,21 @@
         </div>
     </div>
 </div>
+
+@push('scripts')
+    <script>
+
+
+    </script>
+    <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+    <script src="/scripts/add-student.js"></script>
+    <script src="/scripts/add-course.js"></script>
+    <script src="/scripts/show-student.js"></script>
+    <script src="/scripts/show-course.js"></script>
+    <script src='/scripts/validations.js'></script>
+    <script src='/scripts/delete-student.js'></script>
+    <script src='/scripts/delete-course.js'></script>
+
+
+@endpush
+

@@ -4,7 +4,7 @@
         <h4>Add New Course </h4>
     </div>
     <div class="panel-body">    
-        <form action="/add-new-course" method="POST" enctype="multipart/form-data" id="course-validation">
+        <form action="/add-new-course" method="POST" enctype="multipart/form-data" id="course-validation" onsubmit="return courseFormValidation()">
             {!! csrf_field() !!}
             <div class="form-group">
                 <label for="course-name">Course Name</label>

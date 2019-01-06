@@ -3,7 +3,7 @@
         <h4>Add New Student </h4>
     </div>
     <div class="panel-body">
-        <form action="/add-new-student" method="POST" enctype="multipart/form-data" id="student-validation" onsubmit="studentFormValidation()">
+        <form action="/add-new-student" method="POST" enctype="multipart/form-data" id="student-validation" onsubmit="return studentFormValidation()">
             {!! csrf_field() !!}
             <div class="form-group">
                 <label for="student-name">Name</label>
@@ -13,7 +13,7 @@
             </div>
             <div class="form-group">
                 <label for="student-number">Phone Number</label>
-                <input type="text" class="form-control" id="student-number" maxlength="15" name="phone"
+                <input type="number" class="form-control" id="student-number" maxlength="15" name="phone"
                        placeholder="Enter Phone Number">
                 <div id="student-error-number"></div>
             </div>
@@ -25,21 +25,17 @@
             </div>
             <div class="form-group">
                 <label for="student-img">Photo</label>
-                <input type="file" id="student-img" name="image" required>
+                <input type="file" id="student-img" name="image">
                 <div id="student-error-image"></div>
             </div>
-
             <div class="form-group">
                 <label for="student-course">Courses</label>
                 @foreach($courses as $course)
                     <div class="form-inline">
                         <input type="checkbox" id="student-course" name="courses[]" value="{{ $course->id }}"> {{ $course->name}}
                     </div>
-
                 @endforeach
-
             </div>
-
             <div>
                 <input type="submit" class="btn btn-success" value="Add New Student">
             </div>

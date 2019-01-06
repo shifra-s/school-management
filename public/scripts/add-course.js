@@ -1,11 +1,14 @@
 
 $('#add-course').click(function(){
 
-    let form = $('#add-course-form');
-    //replace the main container with the form
-    $('#info-wrapper').html(form);
-    //show the form (default is display none)
-    form.show();
+    //reset the error messages in case the user didn't try to submit and the messages remain
+    resetCourseFormValidations();
+
+    //show the form
+    $('#general-info-school').hide();
+    $('#add-student-form').hide();
+    $('#student-details-section').hide();
+    $('#add-course-form').show();
 
 });
 

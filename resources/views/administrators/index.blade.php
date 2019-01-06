@@ -5,17 +5,11 @@
 
         <!-- List all admins -->
         <div class="col-md-3">
-            <h4>Administrators <i class="fa fa-plus" id="add-admin"></i></h4>
+            <h4 id="admins-header">Administrators <i class="fa fa-plus" id="add-admin"></i></h4>
             @if(count($administrators))
                 <table class="table">
                     <thead>
-                    <!--
-                    <tr>
-                        <th>ID</th>
-                        <th>Name</th>
-                    </tr>
                     </thead>
-                    -->
                     <tbody>
                     @foreach($administrators as $administrator)
                         <tr class="admin" data-id="{{$administrator->id}}" id="admin-{{$administrator->id}}">
@@ -50,8 +44,18 @@
                         @endif
                     </div>
                 </div>
+                @include('administrators.add-admin')
+                <div id="admin-details-section" style="display: none"></div>
             </div>
 
+        </div>
+        <div>
+            <!--display server-side errors-->
+        @foreach($errors->all() as $error) <!-- not so sure how and if to display validations done on server side -->
+            <ul>
+                <li>{{$error}}</li>
+            </ul>
+            @endforeach
         </div>
         @endsection
 
@@ -61,10 +65,9 @@
             <script src="/scripts/add-admin.js"></script>
             <script src="/scripts/show-admin.js"></script>
             <script src='/scripts/delete-admin.js'></script>
-
+            <script src='/scripts/validations.js'></script>
 
 
     @endpush
 
-    @include('administrators.add-admin')
 
