@@ -11,14 +11,15 @@
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+
 
 
 Route::auth();
 Route::group(['middleware' => 'auth'], function() {
 
+    Route::get('/', function () {
+        return view('/home');
+    });
 
 Route::get('/home', 'HomeController@index');
 
@@ -48,7 +49,6 @@ Route::get('course/edit/{id}', 'CourseController@showEdit');
 Route::get('admin/edit/{id}', 'AdministratorsController@showEdit');
 
 
-//need to recall why I did this in the route
 Route::get('check', function(){
 
     return \Auth::user()->roles->name;
