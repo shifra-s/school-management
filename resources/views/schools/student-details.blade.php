@@ -15,7 +15,7 @@
     <div class="panel-body student-details-body">
         <div class="col-md-12 col-xs-9">
             <div class="col-md-3 col-xs-9">
-                <img class="img-thumbnail student-image" src="uploads/{{$student->image}}">
+                <img class="img-thumbnail student-image" alt="student image" src="uploads/{{$student->image}}">
             </div>
             <div class="col-md-9 col-xs-9">
                 <span class="student-name"> {{$student->name}}</span>
@@ -32,7 +32,7 @@
                         <div class="row" id="courses">
                         @if(isset($courses->course) && !is_null($courses->course)) <!--check to make sure the course list isn't empty-->
                             <div class="col-md-6 col-xs-9">
-                                <img class="img-thumbnail registered-course-img" src="uploads/{{$courses->course->image}}">
+                                <img class="img-thumbnail registered-course-img" alt="course image" src="uploads/{{$courses->course->image}}">
                                 <span class="student-courses-name">{{$courses->course->name}}</span>
                             </div>
                             @endif

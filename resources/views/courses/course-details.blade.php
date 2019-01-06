@@ -28,7 +28,7 @@
                         <div class="row" id="students">
                             @if(isset($students->student) && !is_null($students->student)) <!--check to make sure there are students signed up-->
                                 <div class="col-md-6 col-xs-9">
-                                    <img class="img-thumbnail registered-student-img" src="uploads/{{$students->student->image}}">
+                                    <img class="img-thumbnail registered-student-img" alt="course image" src="uploads/{{$students->student->image}}">
                                     <span>{{$students->student->name}}</span>
                                 </div>
                             @endif
