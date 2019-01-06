@@ -9,29 +9,28 @@
                     </div>
                     <div class="panel-body">
                         @if(\Auth::user()->role ==1)
-                            <p> Using this platform, you can manage different things at JB! As an owner, you can manage
-                                the different administrators, as well as the
-                                course list, and student enrollment and registration.</p>
-                            <p>Click on the "Schools" tab in order to manage students as courses. Click on the
-                                "administrators" tab in order to manage the administrators at the school.</p>
+                            <p> As an owner, you can use this platform to manage
+                                the administrators, the
+                                course list, and student enrollment and registration at JB.</p>
+                            <p>Click on the "Schools" tab in order to view and manage students and courses. Click on the
+                                "administrators" tab in order to view and manage the administrators at the school.</p>
 
 
                         @elseif(\Auth::user()->role ==2)
-                            <p> As a manager, you can manage the different administrators at JB, as well as the
+                            <p> As a manager, you can manage the different administrators at JB, the
                                 course list, and student enrollment and registration.</p>
 
-                            <p>Click on the "Schools" tab in order to manage students as courses. Click on the
+                            <p>Click on the "Schools" tab in order to manage students and courses. Click on the
                                 "administrators" tab in order to manage the administrators at the school.</p>
 
                         @elseif(\Auth::user()->role ==3)
                             <p> As a sales manager, you can manage the different courses offered at JB, as well as
-                                student
-                                enrollment and registration.</p>
+                                student enrollment and registration.</p>
 
                             <p>To do so, click on the "Schools" tab.</p>
 
                         @else
-                            <p style="font-size:1.5em;">Please log in!</p>
+                            <p style="font-size:1.5em;">Please log in to begin using the platform!</p>
 
                         @endif
 
