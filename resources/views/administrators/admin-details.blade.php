@@ -12,7 +12,7 @@
     <div class="panel-body admin-details-body">
         <div class="col-md-12">
             <div class="col-md-3">
-                <img class="img-thumbnail admin-image" src="/uploads/{{$admin->image}}">
+                <img class="img-thumbnail admin-image" alt="admin image" src="/uploads/{{$admin->image}}">
             </div>
             <div class="col-md-9">
                 <span class="admin-name">{{$admin->name}}</span>

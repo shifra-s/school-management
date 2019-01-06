@@ -12,7 +12,7 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.5.0/css/font-awesome.min.css"
           integrity="sha384-XdYbMnZ/QjLh6iI4ogqCTaIjrFk87ip+ekIjefZch0Y+PvJ8CDYtEs1ipDmPorQ+" crossorigin="anonymous">
     {{--<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato:100,300,400,700">--}}
-    <link href="https://fonts.googleapis.com/css?family=Abel|Cabin" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Karla|Lato|Montserrat" rel="stylesheet">
 
     <!-- Styles -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.6/css/bootstrap.min.css"
@@ -31,7 +31,8 @@
                 <!-- Branding Image -->
                 <a class="navbar-brand" href="{{ url('/') }}">
                     <a href="#" class="navbar-left">
-                        <img class="navbar-logo" src="/imgs/john_bryce_logo.jpg" alt="jb-logo" style="max-width:100%; max-height:100px; margin-top:6%; margin-left: 20px;">
+                        <img class="navbar-logo" src="/imgs/john_bryce_logo.jpg" alt="jb-logo"
+                             style="max-width:100%; max-height:100px; margin-top:6%; margin-left: 20px;">
                     </a>
                 </a>
             </div>
@@ -48,27 +49,20 @@
                 </button>
                 <div class="collapse navbar-collapse" id="app-navbar-collapse">
 
-                    @if(\Auth::check())
-                        <!-- Left Side Of Navbar -->
-                            <ul class=" nav navbar-nav main-menu navbar-expand-lg navbar-dark fixed-top nav-school-admin">
-                                {{--<li class="mobile-logo">--}}
-                                    {{--<a class="navbar-brand" href="{{ url('/') }}">--}}
-                                        {{--<a href="#" class="navbar-left">--}}
-                                            {{--<img class="navbar-logo" src="/imgs/john_bryce_logo.jpg" alt="jb-logo" style="max-width:100%; max-height:100px;">--}}
-                                        {{--</a>--}}
-                                    {{--</a>--}}
-                                {{--</li>--}}
-                                <li><a href="{{ url('/home') }}">Home</a></li>
-                                <li><a href="{{ url('/schools') }}">School</a></li>
-                                @if(in_array(\Auth::user()->role, [1,2]))
-                                    <li><a href="{{ url('/administrators') }}">Administrators</a></li>
-                                @endif
-                            </ul>
-                    @endif
+                @if(\Auth::check())
+                    <!-- Left Side Of Navbar -->
+                        <ul class=" nav navbar-nav main-menu navbar-expand-lg navbar-dark fixed-top nav-school-admin">
+
+                            <li><a href="{{ url('/home') }}">Home</a></li>
+                            <li><a href="{{ url('/schools') }}">School</a></li>
+                            @if(in_array(\Auth::user()->role, [1,2]))
+                                <li><a href="{{ url('/administrators') }}">Administrators</a></li>
+                            @endif
+                        </ul>
+                @endif
 
 
-                        <!-- Collapsed Hamburger -->
-
+                <!-- Collapsed Hamburger -->
 
 
                 </div>
@@ -77,17 +71,20 @@
                 <ul class="nav navbar-nav navbar-right">
                     <!-- Authentication Links -->
                     @if (Auth::guest())
-                        <li><a href="{{ url('/login') }}">Login</a></li>
+                        <li><a id="login" href="{{ url('/login') }}">Login</a></li>
                         <li><a href="#">{{\Auth::check() ? \Auth::user()->name : ''}}</a></li>
                     @else
                         <li class="dropdown">
                             <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button"
                                aria-expanded="false">
                                 <p id="user-details">
-                                    <strong>{{ Auth::user()->name}} <span>&nbsp&nbsp</span></strong>{{\Auth::user()->roles->name }} <span class="caret"></span>
+                                    <strong>{{ Auth::user()->name}}
+                                        <span>&nbsp&nbsp</span></strong>{{\Auth::user()->roles->name }} <span
+                                            class="caret"></span>
                                 </p>
 
-                                <img id="user-img" style="max-width: 100px; max-height: 100px;" class="img-thumbnail" src="uploads/{{Auth::user()->image}}">
+                                <img id="user-img" style="max-width: 100px; max-height: 100px;" class="img-thumbnail"
+                                     src="uploads/{{Auth::user()->image}}">
                             </a>
                             <ul class="dropdown-menu" role="menu">
                                 <li><a href="{{ url('/logout') }}"><i class="fa fa-btn fa-sign-out"></i>Logout</a></li>

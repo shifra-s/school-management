@@ -1,3 +1,5 @@
+//show the form
+
 $('#add-admin').click(function(){
 
     $('#admin-count').hide();

@@ -26,7 +26,7 @@ class StudentSaveRequest extends Request
         return [
             'name' => 'required',
             'phone' => 'required|numeric',
-            'email' => 'required|email',
+            'email' => 'required|email|unique:students,email',
             'image' => 'required|image|max:2000|dimensions:min_width=100,min_height=100|dimensions:max_width=2000,max_height=2000'
         ];
     }

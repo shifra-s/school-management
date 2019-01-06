@@ -31,7 +31,7 @@
             <div class="form-group">
                 <label for="student-course">Courses</label>
                 @foreach($courses as $course)
-                    <div class="form-inline">
+                    <div class="form-inline student-courses-name">
                         <input type="checkbox" id="student-course" name="courses[]" value="{{ $course->id }}"> {{ $course->name}}
                     </div>
                 @endforeach
