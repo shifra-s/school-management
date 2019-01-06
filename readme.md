@@ -12,5 +12,8 @@ You can go to [here](https://laravel.com/docs/5.7/installation) for guidance.
 Type php artisan serve into the cmd line. Then, go to http://localhost:8000.
 
 ### Login Credentials:
-Username: Shifra\
+Username: shifra@jb.com
 Password: 123456
+
+###
+You can download the database [here](database/school_management.mssql)
